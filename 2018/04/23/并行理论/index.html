@@ -15,18 +15,18 @@
   
   <title>并行理论 | cyx独立博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="并行理论并行与并发的区别  加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_{1}">
+  <meta name="description" content="并行理论 并行与并发的区别   加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律 $$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并行理论">
 <meta property="og:url" content="http://cyx2016.github.io/2018/04/23/并行理论/index.html">
 <meta property="og:site_name" content="cyx独立博客">
-<meta property="og:description" content="并行理论并行与并发的区别  加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_{1}">
+<meta property="og:description" content="并行理论 并行与并发的区别   加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律 $$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/TQWGhuX.png">
 <meta property="og:updated_time" content="2018-04-23T01:47:43.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并行理论">
-<meta name="twitter:description" content="并行理论并行与并发的区别  加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_{1}">
+<meta name="twitter:description" content="并行理论 并行与并发的区别   加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律 $$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_">
 <meta name="twitter:image" content="https://i.imgur.com/TQWGhuX.png">
   
   
@@ -89,24 +89,30 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://cyx2016.github.io/2018/04/23/并行理论/" data-id="cjgby65dj0005a0fytaqowi6b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://cyx2016.github.io/2018/04/23/并行理论/" data-id="cjgbyeo0900078cfylfuoodqx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h1 id="并行理论"><a href="#并行理论" class="headerlink" title="并行理论"></a>并行理论</h1><h2 id="并行与并发的区别"><a href="#并行与并发的区别" class="headerlink" title="并行与并发的区别"></a>并行与并发的区别</h2><p><img src="https://i.imgur.com/TQWGhuX.png" alt=""></p>
+        <h1>并行理论</h1>
+<h2>并行与并发的区别</h2>
+<p><img src="https://i.imgur.com/TQWGhuX.png" alt=""></p>
 <blockquote>
 <p>加速比定义：加速比=优化前耗时/优化后耗时</p>
 </blockquote>
-<h2 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h2><p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$</p>
+<h2>Amdahl定律</h2>
+<p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$</p>
 <p>$$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$</p>
 <p>$$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_{1}*（F+\frac{1-F}{n}）} $$</p>
 <p>$$ 当n趋近于+\infty时 $$</p>
 <p>$$ 加速比=\frac{1}{F} $$</p>
-<h2 id="Gustafson定律"><a href="#Gustafson定律" class="headerlink" title="Gustafson定律"></a>Gustafson定律</h2><p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、a表示串行时间、b表示并行时间 $$<br>$$ F=\frac{a}{a+b} $$</p>
+<h2>Gustafson定律</h2>
+<p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、a表示串行时间、b表示并行时间 $$
+$$ F=\frac{a}{a+b} $$</p>
 <p>$$ 加速比=  \frac{a+n*b}{a+b}=\frac{a}{a+b}+\frac{n*b}{a+b}=F+n*\frac{a+b-a}{a+b}=F+n*\left (  1-F\right )=n-\left ( n-1 \right )*F $$</p>
-<h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>可以看出，由于切入角度不同，Amdahl定律的公式和Gustafson定律的公式截然不同。Gustafson定律中，如果串行比例很小，并行比例很大，那么加处理器个数，就可以获得更快的速度。而Amdahl定律却告诉我们串行比例确定时，处理器的增加是有上限的，而且到达一定程度，处理器的增加速度并不会明显有提升。</p>
+<h2>注</h2>
+<p>可以看出，由于切入角度不同，Amdahl定律的公式和Gustafson定律的公式截然不同。Gustafson定律中，如果串行比例很小，并行比例很大，那么加处理器个数，就可以获得更快的速度。而Amdahl定律却告诉我们串行比例确定时，处理器的增加是有上限的，而且到达一定程度，处理器的增加速度并不会明显有提升。</p>
 <p>Amdahl定律强调，串行比一定是，加速比是有上限的。</p>
 <p>Gustafson定律则前调，如果并行比足够大，那么加速比是可以随处理器的增加看成几乎是线性增长的。</p>
 
