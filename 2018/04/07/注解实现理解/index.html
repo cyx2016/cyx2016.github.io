@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  
+  <meta name="description" content="hello,every body!~" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>java-注解 | cyx独立博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="注解实现理解学习链接 简介注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-注解">
+<meta property="og:url" content="http://cyx2016.github.io/2018/04/07/注解实现理解/index.html">
+<meta property="og:site_name" content="cyx独立博客">
+<meta property="og:description" content="注解实现理解学习链接 简介注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-07T08:56:17.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-注解">
+<meta name="twitter:description" content="注解实现理解学习链接 简介注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="cyx独立博客" rel="home">cyx独立博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">爱生活爱编码</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">首页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">归档</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/tags">标签</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/categories">分类</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/loginabout">关于我</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="java-注解实现理解" class="java-注解实现理解 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      java-注解
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://cyx2016.github.io/2018/04/07/注解实现理解/" data-id="cjgbx1aa80006jcfy93h15sv6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="注解实现理解"><a href="#注解实现理解" class="headerlink" title="注解实现理解"></a>注解实现理解</h1><p><a href="http://blog.csdn.net/zhang0558/article/details/52643016" title="模仿总结" target="_blank" rel="noopener">学习链接</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现的自定义注解，也可以自己定义注解供使用。</p>
+<p>Annotation十分类似public、final这样的修饰符。每个Annotation具有一个名字和成员个数&gt;=0。每个Annotation的成员具有被称为name=value对的名字和值（就像javabean一样），name=value装载了Annotation的信息。</p>
+<h1 id="注解实现实例"><a href="#注解实现实例" class="headerlink" title="注解实现实例"></a>注解实现实例</h1><table>
+<thead>
+<tr>
+<th>注解</th>
+<th style="text-align:right">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Target</td>
+<td style="text-align:right">表示该注解可以用于什么地方，可能的ElementType参数有<br>CONSTRUCTOR：构造器的声明<br>FIELD：域声明（包括enum实例）<br>LOCAL_VARIABLE：局部变量<br>METHOD：方法声明 PACKAGE：包声明<br>PARAMETER：参数声明 <br>TYPE：类、接口（包括注解类型）或enum声明</td>
+</tr>
+<tr>
+<td>@Retention</td>
+<td style="text-align:right">表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数包括：<br>SOURCE：注解将被编译器丢弃<br>CLASS：注解在class文件中可用，但会被VM丢弃<br>RUNTIME：VM将在运行期间保留注解，因此可以通过反射机制读取注解的信息。</td>
+</tr>
+<tr>
+<td>@Document</td>
+<td style="text-align:right">将注解包含在Javadoc中</td>
+</tr>
+<tr>
+<td>@Inherited</td>
+<td style="text-align:right">允许子类继承父类中的注解</td>
+</tr>
+</tbody>
+</table>
+<h2 id="第一步：定义注解"><a href="#第一步：定义注解" class="headerlink" title="第一步：定义注解"></a>第一步：定义注解</h2><pre><code>import java.lang.annotation.ElementType;  
+import java.lang.annotation.Inherited;  
+import java.lang.annotation.Retention;  
+import java.lang.annotation.RetentionPolicy;  
+import java.lang.annotation.Target;  
+
+@Target({ElementType.METHOD,ElementType.FIELD})  
+@Inherited  
+@Retention(RetentionPolicy.RUNTIME)  
+public @interface MyTag {  
+
+    String name() default &quot;车&quot;;  
+    int size() default 10;  
+}
+</code></pre><h2 id="第二步：定义注解"><a href="#第二步：定义注解" class="headerlink" title="第二步：定义注解"></a>第二步：定义注解</h2>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/04/07/注解实现理解/">
+    <time datetime="2018-04-07T09:40:47.000Z" class="entry-date">
+        2018-04-07
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/java-学习/">java 学习</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/04/18/rmi学习/" rel="prev"><span class="meta-nav">←</span> java-rmi学习</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/04/07/反射机制/" rel="next">java-反射机制 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java-学习/">java 学习</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/23/并行理论/">并行理论</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/18/rmi学习/">java-rmi学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/注解实现理解/">java-注解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/反射机制/">java-反射机制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/my-java/">my java</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 cyx
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

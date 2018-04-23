@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  
+  <meta name="description" content="hello,every body!~" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>java-反射机制 | cyx独立博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#反射机制学习 参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情对象获取 第一种方式获取Class对象      Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-反射机制">
+<meta property="og:url" content="http://cyx2016.github.io/2018/04/07/反射机制/index.html">
+<meta property="og:site_name" content="cyx独立博客">
+<meta property="og:description" content="#反射机制学习 参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情对象获取 第一种方式获取Class对象      Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-07T09:04:10.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-反射机制">
+<meta name="twitter:description" content="#反射机制学习 参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情对象获取 第一种方式获取Class对象      Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="cyx独立博客" rel="home">cyx独立博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">爱生活爱编码</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">首页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">归档</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/tags">标签</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/categories">分类</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/loginabout">关于我</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="java-反射机制" class="java-反射机制 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      java-反射机制
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://cyx2016.github.io/2018/04/07/反射机制/" data-id="cjgbx1aa30004jcfybbggwipj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>#反射机制学习</p>
+<p><a href="http://blog.csdn.net/sinat_38259539/article/details/71799078" title="模仿总结" target="_blank" rel="noopener">参照学习链接</a></p>
+<blockquote>
+<p>反射就是把java类中的各种成分映射成一个个的Java对象</p>
+<p>例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象</p>
+</blockquote>
+<h1 id="使用详情"><a href="#使用详情" class="headerlink" title="使用详情"></a>使用详情</h1><h2 id="对象获取"><a href="#对象获取" class="headerlink" title="对象获取"></a>对象获取</h2><blockquote>
+<p>第一种方式获取Class对象    </p>
+</blockquote>
+<pre><code>Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。  
+Class stuClass = stu1.getClass();//获取Class对象  
+System.out.println(stuClass.getName());  
+</code></pre><blockquote>
+<p>第二种方式获取Class对象</p>
+</blockquote>
+<pre><code>Class stuClass2 = Student.class;  
+System.out.println(stuClass == stuClass2);//判断第一种方式获取的Class对象和第二种方式获取的是否是同一个
+</code></pre><blockquote>
+<p>第三种方式获取Class对象</p>
+</blockquote>
+<pre><code>try {  
+        Class stuClass3 = Class.forName(&quot;fanshe.Student&quot;);//注意此字符串必须是真实路径，就是带包名的类路径，包名.类名  
+        System.out.println(stuClass3 == stuClass2);//判断三种方式是否获取的是同一个Class对象  
+} catch (ClassNotFoundException e) {  
+        e.printStackTrace();  
+}    
+</code></pre><h2 id="构造方法获取并使用"><a href="#构造方法获取并使用" class="headerlink" title="构造方法获取并使用"></a>构造方法获取并使用</h2><blockquote>
+<p>假设对象已获取，为clazz</p>
+</blockquote>
+<ul>
+<li><p>获取所有公有构造方法 </p>
+<blockquote>
+</blockquote>
+<p>  Constructor[] conArray = clazz.getConstructors();<br>  //输出显示<br>  for(Constructor c : conArray){  </p>
+<pre><code>System.out.println(c);  
+</code></pre><p>  } </p>
+</li>
+<li><p>获取所有构造方法 </p>
+<blockquote>
+</blockquote>
+<p>  Constructor[] conArray = clazz.getDeclaredConstructors();</p>
+</li>
+<li><p>获取公有、无参的构造方法</p>
+<blockquote>
+</blockquote>
+<p>  Constructor con = clazz.getConstructor(null); //null可以不写</p>
+</li>
+<li><p>构造方法使用</p>
+<blockquote>
+</blockquote>
+<p>  Object obj = con.newInstance();<br>成员变量获取并使用</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>获取所有公有成员变量 </p>
+<blockquote>
+</blockquote>
+<p>  Field[] fieldArray = clazz.getFields();<br>  //输出显示<br>  for(Constructor c : conArray){  </p>
+<pre><code>System.out.println(c);  
+</code></pre><p>  }</p>
+</li>
+<li><p>同理，同构造方法一样</p>
+<blockquote>
+</blockquote>
+<p>  clazz.getDeclaredFields();//获取所有成员变量<br>  clazz.getField(“name”);//获取指定成员变量，个人感觉多余</p>
+</li>
+<li><p>对指定对象成员变量赋值</p>
+<blockquote>
+</blockquote>
+<p>  f.set(obj, T);//f为类对象获取的成员变量，obj是实例化的对象，T是成员变量需要赋予的类型值</p>
+</li>
+<li><p>暴力反射，解除私有限定，同理适用于方法，不在赘述</p>
+<blockquote>
+</blockquote>
+<p>  f.setAccessible(true);</p>
+</li>
+</ul>
+<h2 id="成员方法获取并调用"><a href="#成员方法获取并调用" class="headerlink" title="成员方法获取并调用"></a>成员方法获取并调用</h2><ul>
+<li><p>获取公有方法</p>
+<blockquote>
+</blockquote>
+<p>  Method[] methodArray = stuClass.getMethods();<br>  for(Method m : methodArray){  </p>
+<pre><code>System.out.println(m);  
+</code></pre><p>  } </p>
+</li>
+<li><p>获取所有方法</p>
+<blockquote>
+</blockquote>
+<p>  Method[] methodArray = stuClass.getDeclaredMethods();</p>
+</li>
+<li><p>调用方法</p>
+<blockquote>
+</blockquote>
+<p>  //公有类方法调用<br>  Method m = stuClass.getMethod(“show1”, String.class);//show1是方法名的字符串形式，String.class代表需要的形参<br>  m.invoke(clazz, value); //clazz是实例对象，value是方法需要实参</p>
+<p>  //私有类方法调用<br>  m = stuClass.getDeclaredMethod(“show4”, int.class);<br>  m.setAccessible(true);//解除私有限定<br>  //有返回结果调用方法<br>  Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参    </p>
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/04/07/反射机制/">
+    <time datetime="2018-04-07T09:18:47.000Z" class="entry-date">
+        2018-04-07
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/java-学习/">java 学习</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/04/07/注解实现理解/" rel="prev"><span class="meta-nav">←</span> java-注解</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/04/07/my-java/" rel="next">my java <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java-学习/">java 学习</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/23/并行理论/">并行理论</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/18/rmi学习/">java-rmi学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/注解实现理解/">java-注解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/反射机制/">java-反射机制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/my-java/">my java</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 cyx
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
