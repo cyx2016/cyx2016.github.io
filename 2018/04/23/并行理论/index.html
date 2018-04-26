@@ -369,6 +369,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/23/并行理论/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/04/23/并行理论/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -474,6 +484,9 @@ $$ F=\frac{a}{a+b} $$</p>
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -718,7 +731,7 @@ $$ F=\frac{a}{a+b} $$</p>
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
@@ -746,6 +759,32 @@ $$ F=\frac{a}{a+b} $$</p>
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.1.8/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'hqvlRbJg64imIDSdsd7rNp4z-gzGzoHsz',
+        appKey: '8BWQD2BizdwdbepJBErejaHz',
+        placeholder: '为了能评论，换了一个这么难看的主题，醉了',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
