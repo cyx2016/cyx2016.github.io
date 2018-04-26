@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="并行理论并行与并发的区别  加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T\_{n}表示n个处理器优化后耗时，T\_{n}表示优化前耗时T\_{n}=T\_{1}*（F+\frac{1-F}{n}）加速比=\frac{T\_{1}}{T\_{n}}=\frac{T\_{1}}{T\_{1}*（F+\fra">
+  <meta name="description" content="并行理论 并行与并发的区别   加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律 $$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并行理论">
 <meta property="og:url" content="http://cyx2016.github.io/2018/04/23/并行理论/index.html">
 <meta property="og:site_name" content="cyx独立博客">
-<meta property="og:description" content="并行理论并行与并发的区别  加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T\_{n}表示n个处理器优化后耗时，T\_{n}表示优化前耗时T\_{n}=T\_{1}*（F+\frac{1-F}{n}）加速比=\frac{T\_{1}}{T\_{n}}=\frac{T\_{1}}{T\_{1}*（F+\fra">
+<meta property="og:description" content="并行理论 并行与并发的区别   加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律 $$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/TQWGhuX.png">
 <meta property="og:updated_time" content="2018-04-23T08:27:52.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并行理论">
-<meta name="twitter:description" content="并行理论并行与并发的区别  加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T\_{n}表示n个处理器优化后耗时，T\_{n}表示优化前耗时T\_{n}=T\_{1}*（F+\frac{1-F}{n}）加速比=\frac{T\_{1}}{T\_{n}}=\frac{T\_{1}}{T\_{1}*（F+\fra">
+<meta name="twitter:description" content="并行理论 并行与并发的区别   加速比定义：加速比=优化前耗时/优化后耗时  Amdahl定律 $$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$ $$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$ $$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_">
 <meta name="twitter:image" content="https://i.imgur.com/TQWGhuX.png">
 
 
@@ -393,11 +393,24 @@
       
 
       
-        <h1 id="并行理论"><a href="#并行理论" class="headerlink" title="并行理论"></a>并行理论</h1><h2 id="并行与并发的区别"><a href="#并行与并发的区别" class="headerlink" title="并行与并发的区别"></a>并行与并发的区别</h2><p><img src="https://i.imgur.com/TQWGhuX.png" alt=""></p>
+        <h1>并行理论</h1>
+<h2>并行与并发的区别</h2>
+<p><img src="https://i.imgur.com/TQWGhuX.png" alt=""></p>
 <blockquote>
 <p>加速比定义：加速比=优化前耗时/优化后耗时</p>
 </blockquote>
-<h2 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h2><script type="math/tex; mode=display">条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T\_{n}表示n个处理器优化后耗时，T\_{n}表示优化前耗时</script><script type="math/tex; mode=display">T\_{n}=T\_{1}*（F+\frac{1-F}{n}）</script><script type="math/tex; mode=display">加速比=\frac{T\_{1}}{T\_{n}}=\frac{T\_{1}}{T\_{1}*（F+\frac{1-F}{n}）}</script><script type="math/tex; mode=display">当n趋近于+\infty时</script><script type="math/tex; mode=display">加速比=\frac{1}{F}</script><h2 id="Gustafson定律"><a href="#Gustafson定律" class="headerlink" title="Gustafson定律"></a>Gustafson定律</h2><script type="math/tex; mode=display">条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、a表示串行时间、b表示并行时间</script><script type="math/tex; mode=display">F=\frac{a}{a+b}</script><script type="math/tex; mode=display">加速比=  \frac{a+n\*b}{a+b}=\frac{a}{a+b}+\frac{n\*b}{a+b}=F+n\*\frac{a+b-a}{a+b}=F+n\*\left (  1-F\right )=n-\left ( n-1 \right )\*F</script><h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>可以看出，由于切入角度不同，Amdahl定律的公式和Gustafson定律的公式截然不同。Gustafson定律中，如果串行比例很小，并行比例很大，那么加处理器个数，就可以获得更快的速度。而Amdahl定律却告诉我们串行比例确定时，处理器的增加是有上限的，而且到达一定程度，处理器的增加速度并不会明显有提升。</p>
+<h2>Amdahl定律</h2>
+<p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$</p>
+<p>$$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$</p>
+<p>$$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_{1}*（F+\frac{1-F}{n}）} $$</p>
+<p>$$ 当n趋近于+\infty时 $$</p>
+<p>$$ 加速比=\frac{1}{F} $$</p>
+<h2>Gustafson定律</h2>
+<p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、a表示串行时间、b表示并行时间 $$
+$$ F=\frac{a}{a+b} $$</p>
+<p>$$ 加速比=  \frac{a+n*b}{a+b}=\frac{a}{a+b}+\frac{n*b}{a+b}=F+n*\frac{a+b-a}{a+b}=F+n*\left (  1-F\right )=n-\left ( n-1 \right )*F $$</p>
+<h2>注</h2>
+<p>可以看出，由于切入角度不同，Amdahl定律的公式和Gustafson定律的公式截然不同。Gustafson定律中，如果串行比例很小，并行比例很大，那么加处理器个数，就可以获得更快的速度。而Amdahl定律却告诉我们串行比例确定时，处理器的增加是有上限的，而且到达一定程度，处理器的增加速度并不会明显有提升。</p>
 <p>Amdahl定律强调，串行比一定是，加速比是有上限的。</p>
 <p>Gustafson定律则前调，如果并行比足够大，那么加速比是可以随处理器的增加看成几乎是线性增长的。</p>
 
@@ -564,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#并行理论"><span class="nav-number">1.</span> <span class="nav-text">并行理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并行与并发的区别"><span class="nav-number">1.1.</span> <span class="nav-text">并行与并发的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amdahl定律"><span class="nav-number">1.2.</span> <span class="nav-text">Amdahl定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gustafson定律"><span class="nav-number">1.3.</span> <span class="nav-text">Gustafson定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注"><span class="nav-number">1.4.</span> <span class="nav-text">注</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">并行理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">并行与并发的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Amdahl定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Gustafson定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">注</span></a></li></ol></li></ol></div>
             
 
           </div>
