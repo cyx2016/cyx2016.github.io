@@ -397,24 +397,11 @@
       
         
           
-            <h1>并行理论</h1>
-<h2>并行与并发的区别</h2>
-<p><img src="https://i.imgur.com/TQWGhuX.png" alt=""></p>
+            <h1 id="并行理论"><a href="#并行理论" class="headerlink" title="并行理论"></a>并行理论</h1><h2 id="并行与并发的区别"><a href="#并行与并发的区别" class="headerlink" title="并行与并发的区别"></a>并行与并发的区别</h2><p><img src="https://i.imgur.com/TQWGhuX.png" alt=""></p>
 <blockquote>
 <p>加速比定义：加速比=优化前耗时/优化后耗时</p>
 </blockquote>
-<h2>Amdahl定律</h2>
-<p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T_{n}表示n个处理器优化后耗时，T_{n}表示优化前耗时 $$</p>
-<p>$$ T_{n}=T_{1}*（F+\frac{1-F}{n}）$$</p>
-<p>$$ 加速比=\frac{T_{1}}{T_{n}}=\frac{T_{1}}{T_{1}*（F+\frac{1-F}{n}）} $$</p>
-<p>$$ 当n趋近于+\infty时 $$</p>
-<p>$$ 加速比=\frac{1}{F} $$</p>
-<h2>Gustafson定律</h2>
-<p>$$ 条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、a表示串行时间、b表示并行时间 $$
-$$ F=\frac{a}{a+b} $$</p>
-<p>$$ 加速比=  \frac{a+n*b}{a+b}=\frac{a}{a+b}+\frac{n*b}{a+b}=F+n*\frac{a+b-a}{a+b}=F+n*\left (  1-F\right )=n-\left ( n-1 \right )*F $$</p>
-<h2>注</h2>
-<p>可以看出，由于切入角度不同，Amdahl定律的公式和Gustafson定律的公式截然不同。Gustafson定律中，如果串行比例很小，并行比例很大，那么加处理器个数，就可以获得更快的速度。而Amdahl定律却告诉我们串行比例确定时，处理器的增加是有上限的，而且到达一定程度，处理器的增加速度并不会明显有提升。</p>
+<h2 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h2><script type="math/tex; mode=display">条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、T\_{n}表示n个处理器优化后耗时，T\_{n}表示优化前耗时</script><script type="math/tex; mode=display">T\_{n}=T\_{1}*（F+\frac{1-F}{n}）</script><script type="math/tex; mode=display">加速比=\frac{T\_{1}}{T\_{n}}=\frac{T\_{1}}{T\_{1}*（F+\frac{1-F}{n}）}</script><script type="math/tex; mode=display">当n趋近于+\infty时</script><script type="math/tex; mode=display">加速比=\frac{1}{F}</script><h2 id="Gustafson定律"><a href="#Gustafson定律" class="headerlink" title="Gustafson定律"></a>Gustafson定律</h2><script type="math/tex; mode=display">条件：n个处理器、F表示只能串行比（某些步骤只能串行的时间和优化前耗时比）、a表示串行时间、b表示并行时间</script><script type="math/tex; mode=display">F=\frac{a}{a+b}</script><script type="math/tex; mode=display">加速比=  \frac{a+n\*b}{a+b}=\frac{a}{a+b}+\frac{n\*b}{a+b}=F+n\*\frac{a+b-a}{a+b}=F+n\*\left (  1-F\right )=n-\left ( n-1 \right )\*F</script><h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>可以看出，由于切入角度不同，Amdahl定律的公式和Gustafson定律的公式截然不同。Gustafson定律中，如果串行比例很小，并行比例很大，那么加处理器个数，就可以获得更快的速度。而Amdahl定律却告诉我们串行比例确定时，处理器的增加是有上限的，而且到达一定程度，处理器的增加速度并不会明显有提升。</p>
 <p>Amdahl定律强调，串行比一定是，加速比是有上限的。</p>
 <p>Gustafson定律则前调，如果并行比足够大，那么加速比是可以随处理器的增加看成几乎是线性增长的。</p>
 
@@ -574,155 +561,135 @@ $$ F=\frac{a}{a+b} $$</p>
       
         
           
-            <h1>RMI初步学习</h1>
-<blockquote>
-<p>RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton）。
-<img src="https://i.imgur.com/qwLvcRF.jpg" alt="">
-远程对象会在客户端生成存根对象。当客户端调用远程对象的方法时，实际上是调用本地存根的相应方法。然后，存根会把被访问的远程对象名、方法名以及参数编组后发送给服务器，由骨架去调用相应的远程方法并把返回值或异常返回给客户端。</p>
+            <h1 id="RMI初步学习"><a href="#RMI初步学习" class="headerlink" title="RMI初步学习"></a>RMI初步学习</h1><blockquote>
+<p>RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton）。<br><img src="https://i.imgur.com/qwLvcRF.jpg" alt=""><br>远程对象会在客户端生成存根对象。当客户端调用远程对象的方法时，实际上是调用本地存根的相应方法。然后，存根会把被访问的远程对象名、方法名以及参数编组后发送给服务器，由骨架去调用相应的远程方法并把返回值或异常返回给客户端。</p>
 </blockquote>
-<h2>基本步骤</h2>
-<ol>
+<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><ol>
 <li>创建远程接口，继承java.rmi.Remote接口；</li>
 <li>创建远程类，实现远程接口；</li>
 <li>创建服务器程序，在rmiregistry注册表中注册远程对象；</li>
 <li>创建客户端程序，负责定位远程对象，并且调用远程方法。</li>
 </ol>
-<h2>代码实例</h2>
-<p><strong>server端</strong></p>
+<h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><p><strong>server端</strong></p>
 <ol>
-<li>
-<p>定义一个接口供远程调用</p>
-<pre><code>package day_1;
+<li><p>定义一个接口供远程调用</p>
+<pre><code> package day_1;
 
-import java.rmi.Remote;
+ import java.rmi.Remote;
 
-public interface Warehouse extends Remote {
-	double getPrice(String description) throws Exception;
-}
-</code></pre>
-</li>
-<li>
-<p>实现接口算法</p>
-<pre><code>package day_1;
-
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.HashMap;
-import java.util.Map;
-
-//服务器端接口实现
-public class WarehouseImpl extends UnicastRemoteObject implements Warehouse{
-
-	private Map&lt;String, Double&gt; prices;
-	protected WarehouseImpl() throws RemoteException {
-		super();
-		prices=new HashMap&lt;&gt;();
-		prices.put(&quot;联想电脑G490&quot;, 2500.00);
-		prices.put(&quot;kindle 2代&quot;, 400.00);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public double getPrice(String description) throws Exception {
-		Double price=prices.get(description);
-		return price==null ? 0 : price;
-	}
+ public interface Warehouse extends Remote {
+     double getPrice(String description) throws Exception;
  }
-</code></pre>
-</li>
-<li>
-<p>server端开启服务</p>
-<pre><code>package day_1;
+</code></pre></li>
+<li><p>实现接口算法</p>
+<pre><code> package day_1;
 
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
+ import java.rmi.RemoteException;
+ import java.rmi.server.UnicastRemoteObject;
+ import java.util.HashMap;
+ import java.util.Map;
 
-import javax.naming.*;
+ //服务器端接口实现
+ public class WarehouseImpl extends UnicastRemoteObject implements Warehouse{
 
-public class WarehouseServer {
-	public static void main(String[] args) throws Exception {
-		
-		//人工创建rmiregistry服务
-		LocateRegistry.createRegistry(12312); 
-		
-		System.out.println(&quot;构造 WarehouseImpl...&quot;);
-		WarehouseImpl centralWarehouse = new WarehouseImpl();
-		
-		System.out.println(&quot;对象注册到服务器RMI注册表中...&quot;);
-		Context namingContext = new InitialContext();
-		namingContext.bind(&quot;rmi://127.0.0.1:12312/Hello&quot;, centralWarehouse);
-		
-		System.out.println(&quot;等待客户端调用...&quot;);
-	}
+     private Map&lt;String, Double&gt; prices;
+     protected WarehouseImpl() throws RemoteException {
+         super();
+         prices=new HashMap&lt;&gt;();
+         prices.put(&quot;联想电脑G490&quot;, 2500.00);
+         prices.put(&quot;kindle 2代&quot;, 400.00);
+         // TODO Auto-generated constructor stub
+     }
 
-}
-</code></pre>
-</li>
+     @Override
+     public double getPrice(String description) throws Exception {
+         Double price=prices.get(description);
+         return price==null ? 0 : price;
+     }
+  }
+</code></pre></li>
+<li><p>server端开启服务</p>
+<pre><code> package day_1;
+
+ import java.rmi.RemoteException;
+ import java.rmi.registry.LocateRegistry;
+
+ import javax.naming.*;
+
+ public class WarehouseServer {
+     public static void main(String[] args) throws Exception {
+
+         //人工创建rmiregistry服务
+         LocateRegistry.createRegistry(12312); 
+
+         System.out.println(&quot;构造 WarehouseImpl...&quot;);
+         WarehouseImpl centralWarehouse = new WarehouseImpl();
+
+         System.out.println(&quot;对象注册到服务器RMI注册表中...&quot;);
+         Context namingContext = new InitialContext();
+         namingContext.bind(&quot;rmi://127.0.0.1:12312/Hello&quot;, centralWarehouse);
+
+         System.out.println(&quot;等待客户端调用...&quot;);
+     }
+
+ }
+</code></pre></li>
 </ol>
 <p><strong>client端调用</strong></p>
 <ol>
-<li>
-<p>映射服务端接口，便于调用
-	package day_1;</p>
-<pre><code>import java.rmi.Remote;
+<li><p>映射服务端接口，便于调用</p>
+<pre><code> package day_1;
 
-public interface Warehouse extends Remote {
-	double getPrice(String description) throws Exception;
-}
-</code></pre>
-</li>
-<li>
-<p>客户端调用方法</p>
-<pre><code>package day_1;
+ import java.rmi.Remote;
 
-import java.util.Enumeration;
+ public interface Warehouse extends Remote {
+     double getPrice(String description) throws Exception;
+ }
+</code></pre></li>
+<li><p>客户端调用方法</p>
+<pre><code> package day_1;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NameClassPair;
-import javax.naming.NamingException;
+ import java.util.Enumeration;
 
-public class WarehouseClient {
+ import javax.naming.Context;
+ import javax.naming.InitialContext;
+ import javax.naming.NameClassPair;
+ import javax.naming.NamingException;
 
-	public static void main(String[] args) throws Exception {
-		Context namingContext = new InitialContext();
-		
-		System.out.println(&quot;RMI 注册表绑定&quot;);
-		Enumeration&lt;NameClassPair&gt; e=namingContext.list(&quot;rmi://localhost:12312/&quot;);
-		while (e.hasMoreElements()) {
-			System.out.println(e.nextElement().getName());
-		}
-		
-		String url=&quot;rmi://127.0.0.1:12312/Hello&quot;;
-		Warehouse centralWarehouse=(Warehouse)namingContext.lookup(url);
-		
-		String descr=&quot;联想电脑G490&quot;;
-		Double price = centralWarehouse.getPrice(descr);
-		System.out.println(descr+&quot;:&quot;+price);
+ public class WarehouseClient {
 
-	}
+     public static void main(String[] args) throws Exception {
+         Context namingContext = new InitialContext();
 
-}
-</code></pre>
-</li>
+         System.out.println(&quot;RMI 注册表绑定&quot;);
+         Enumeration&lt;NameClassPair&gt; e=namingContext.list(&quot;rmi://localhost:12312/&quot;);
+         while (e.hasMoreElements()) {
+             System.out.println(e.nextElement().getName());
+         }
+
+         String url=&quot;rmi://127.0.0.1:12312/Hello&quot;;
+         Warehouse centralWarehouse=(Warehouse)namingContext.lookup(url);
+
+         String descr=&quot;联想电脑G490&quot;;
+         Double price = centralWarehouse.getPrice(descr);
+         System.out.println(descr+&quot;:&quot;+price);
+
+     }
+
+ }
+</code></pre></li>
 </ol>
-<h2>运行截图</h2>
-<p><em>server端</em></p>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><em>server端</em></p>
 <p><img src="https://i.imgur.com/p5rUgqZ.png" alt=""></p>
 <p><em>client端</em></p>
 <p><img src="https://i.imgur.com/kGGuCSQ.png" alt=""></p>
-<h2>出现问题及原因</h2>
-<p><em>server端</em></p>
+<h2 id="出现问题及原因"><a href="#出现问题及原因" class="headerlink" title="出现问题及原因"></a>出现问题及原因</h2><p><em>server端</em></p>
 <p><img src="https://i.imgur.com/rbh1ma5.png" alt=""></p>
-<p><strong>原因：</strong>
-rmi未注册端口
-后来用代码强行注册</p>
+<p><strong>原因：</strong><br>rmi未注册端口<br>后来用代码强行注册</p>
 <pre><code>LocateRegistry.createRegistry(12312);
-</code></pre>
-<p><em>client端</em></p>
+</code></pre><p><em>client端</em></p>
 <p><img src="https://i.imgur.com/vjdO9ko.png" alt=""></p>
-<p><strong>原因：</strong>
-客户端映射接口package需与服务端一致，遂改成package day_1;</p>
+<p><strong>原因：</strong><br>客户端映射接口package需与服务端一致，遂改成package day_1;</p>
 
           
         
@@ -880,12 +847,10 @@ rmi未注册端口
       
         
           
-            <h1>注解实现理解</h1>
-<p><a href="http://blog.csdn.net/zhang0558/article/details/52643016" title="模仿总结" target="_blank" rel="noopener">学习链接</a></p>
-<h1>简介</h1>
-<p>注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现的自定义注解，也可以自己定义注解供使用。</p>
+            <h1 id="注解实现理解"><a href="#注解实现理解" class="headerlink" title="注解实现理解"></a>注解实现理解</h1><p><a href="http://blog.csdn.net/zhang0558/article/details/52643016" title="模仿总结" target="_blank" rel="noopener">学习链接</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现的自定义注解，也可以自己定义注解供使用。</p>
 <p>Annotation十分类似public、final这样的修饰符。每个Annotation具有一个名字和成员个数&gt;=0。每个Annotation的成员具有被称为name=value对的名字和值（就像javabean一样），name=value装载了Annotation的信息。</p>
-<h1>注解实现实例</h1>
+<h1 id="注解实现实例"><a href="#注解实现实例" class="headerlink" title="注解实现实例"></a>注解实现实例</h1><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -896,11 +861,11 @@ rmi未注册端口
 <tbody>
 <tr>
 <td>@Target</td>
-<td style="text-align:right">表示该注解可以用于什么地方，可能的ElementType参数有&lt;br&gt;CONSTRUCTOR：构造器的声明&lt;br&gt;FIELD：域声明（包括enum实例）&lt;br&gt;LOCAL_VARIABLE：局部变量&lt;br&gt;METHOD：方法声明 PACKAGE：包声明&lt;br&gt;PARAMETER：参数声明 &lt;br&gt;TYPE：类、接口（包括注解类型）或enum声明</td>
+<td style="text-align:right">表示该注解可以用于什么地方，可能的ElementType参数有<br>CONSTRUCTOR：构造器的声明<br>FIELD：域声明（包括enum实例）<br>LOCAL_VARIABLE：局部变量<br>METHOD：方法声明 PACKAGE：包声明<br>PARAMETER：参数声明 <br>TYPE：类、接口（包括注解类型）或enum声明</td>
 </tr>
 <tr>
 <td>@Retention</td>
-<td style="text-align:right">表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数包括：&lt;br&gt;SOURCE：注解将被编译器丢弃&lt;br&gt;CLASS：注解在class文件中可用，但会被VM丢弃&lt;br&gt;RUNTIME：VM将在运行期间保留注解，因此可以通过反射机制读取注解的信息。</td>
+<td style="text-align:right">表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数包括：<br>SOURCE：注解将被编译器丢弃<br>CLASS：注解在class文件中可用，但会被VM丢弃<br>RUNTIME：VM将在运行期间保留注解，因此可以通过反射机制读取注解的信息。</td>
 </tr>
 <tr>
 <td>@Document</td>
@@ -912,8 +877,8 @@ rmi未注册端口
 </tr>
 </tbody>
 </table>
-<h2>第一步：定义注解</h2>
-<pre><code>import java.lang.annotation.ElementType;  
+</div>
+<h2 id="第一步：定义注解"><a href="#第一步：定义注解" class="headerlink" title="第一步：定义注解"></a>第一步：定义注解</h2><pre><code>import java.lang.annotation.ElementType;  
 import java.lang.annotation.Inherited;  
 import java.lang.annotation.Retention;  
 import java.lang.annotation.RetentionPolicy;  
@@ -927,9 +892,7 @@ public @interface MyTag {
     String name() default &quot;车&quot;;  
     int size() default 10;  
 }
-</code></pre>
-<h2>第二步：定义注解</h2>
-
+</code></pre><h2 id="第二步：定义注解"><a href="#第二步：定义注解" class="headerlink" title="第二步：定义注解"></a>第二步：定义注解</h2>
           
         
       
@@ -1086,28 +1049,23 @@ public @interface MyTag {
       
         
           
-            <p>#反射机制学习</p>
-<p><a href="http://blog.csdn.net/sinat_38259539/article/details/71799078" title="模仿总结" target="_blank" rel="noopener">参照学习链接</a></p>
+            <h1 id="反射机制学习"><a href="#反射机制学习" class="headerlink" title="反射机制学习"></a>反射机制学习</h1><p><a href="http://blog.csdn.net/sinat_38259539/article/details/71799078" title="模仿总结" target="_blank" rel="noopener">参照学习链接</a></p>
 <blockquote>
 <p>反射就是把java类中的各种成分映射成一个个的Java对象</p>
 <p>例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象</p>
 </blockquote>
-<h1>使用详情</h1>
-<h2>对象获取</h2>
-<blockquote>
-<p>第一种方式获取Class对象</p>
+<h1 id="使用详情"><a href="#使用详情" class="headerlink" title="使用详情"></a>使用详情</h1><h2 id="对象获取"><a href="#对象获取" class="headerlink" title="对象获取"></a>对象获取</h2><blockquote>
+<p>第一种方式获取Class对象    </p>
 </blockquote>
 <pre><code>Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。  
 Class stuClass = stu1.getClass();//获取Class对象  
 System.out.println(stuClass.getName());  
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>第二种方式获取Class对象</p>
 </blockquote>
 <pre><code>Class stuClass2 = Student.class;  
 System.out.println(stuClass == stuClass2);//判断第一种方式获取的Class对象和第二种方式获取的是否是同一个
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>第三种方式获取Class对象</p>
 </blockquote>
 <pre><code>try {  
@@ -1116,99 +1074,56 @@ System.out.println(stuClass == stuClass2);//判断第一种方式获取的Class�
 } catch (ClassNotFoundException e) {  
         e.printStackTrace();  
 }    
-</code></pre>
-<h2>构造方法获取并使用</h2>
-<blockquote>
+</code></pre><h2 id="构造方法获取并使用"><a href="#构造方法获取并使用" class="headerlink" title="构造方法获取并使用"></a>构造方法获取并使用</h2><blockquote>
 <p>假设对象已获取，为clazz</p>
 </blockquote>
 <ul>
-<li>获取所有公有构造方法</li>
+<li><p>获取所有公有构造方法<br>&gt;</p>
+<p>  Constructor[] conArray = clazz.getConstructors();<br>  //输出显示<br>  for(Constructor c : conArray){  </p>
+<pre><code>      System.out.println(c);  
+</code></pre><p>  } </p>
+</li>
+<li><p>获取所有构造方法<br>&gt;</p>
+<p>  Constructor[] conArray = clazz.getDeclaredConstructors();</p>
+</li>
+<li><p>获取公有、无参的构造方法<br>&gt;</p>
+<p>  Constructor con = clazz.getConstructor(null); //null可以不写</p>
+</li>
+<li><p>构造方法使用<br>&gt;</p>
+<p>  Object obj = con.newInstance();<br>成员变量获取并使用</p>
+</li>
 </ul>
-<blockquote></blockquote>
-<pre><code>Constructor[] conArray = clazz.getConstructors();  
-//输出显示
-for(Constructor c : conArray){  
-        System.out.println(c);  
-} 
-</code></pre>
+<hr>
 <ul>
-<li>获取所有构造方法</li>
+<li><p>获取所有公有成员变量<br>&gt;</p>
+<p>  Field[] fieldArray = clazz.getFields();<br>  //输出显示<br>  for(Constructor c : conArray){  </p>
+<pre><code>      System.out.println(c);  
+</code></pre><p>  }</p>
+</li>
+<li><p>同理，同构造方法一样<br>&gt;</p>
+<p>  clazz.getDeclaredFields();//获取所有成员变量<br>  clazz.getField(“name”);//获取指定成员变量，个人感觉多余</p>
+</li>
+<li><p>对指定对象成员变量赋值<br>&gt;</p>
+<p>  f.set(obj, T);//f为类对象获取的成员变量，obj是实例化的对象，T是成员变量需要赋予的类型值</p>
+</li>
+<li><p>暴力反射，解除私有限定，同理适用于方法，不在赘述<br>&gt;</p>
+<p>  f.setAccessible(true);</p>
+</li>
 </ul>
-<blockquote></blockquote>
-<pre><code>Constructor[] conArray = clazz.getDeclaredConstructors();
-</code></pre>
-<ul>
-<li>获取公有、无参的构造方法</li>
+<h2 id="成员方法获取并调用"><a href="#成员方法获取并调用" class="headerlink" title="成员方法获取并调用"></a>成员方法获取并调用</h2><ul>
+<li><p>获取公有方法<br>&gt;</p>
+<p>  Method[] methodArray = stuClass.getMethods();<br>  for(Method m : methodArray){  </p>
+<pre><code>  System.out.println(m);  
+</code></pre><p>  } </p>
+</li>
+<li><p>获取所有方法<br>&gt;</p>
+<p>  Method[] methodArray = stuClass.getDeclaredMethods();</p>
+</li>
+<li><p>调用方法<br>&gt;</p>
+<p>  //公有类方法调用<br>  Method m = stuClass.getMethod(“show1”, String.class);//show1是方法名的字符串形式，String.class代表需要的形参<br>  m.invoke(clazz, value); //clazz是实例对象，value是方法需要实参</p>
+<p>  //私有类方法调用<br>  m = stuClass.getDeclaredMethod(“show4”, int.class);<br>  m.setAccessible(true);//解除私有限定<br>  //有返回结果调用方法<br>  Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参    </p>
+</li>
 </ul>
-<blockquote></blockquote>
-<pre><code>Constructor con = clazz.getConstructor(null); //null可以不写
-</code></pre>
-<ul>
-<li>构造方法使用</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Object obj = con.newInstance(); 
-</code></pre>
-<h2>成员变量获取并使用</h2>
-<ul>
-<li>获取所有公有成员变量</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Field[] fieldArray = clazz.getFields(); 
-//输出显示
-for(Constructor c : conArray){  
-        System.out.println(c);  
-}
-</code></pre>
-<ul>
-<li>同理，同构造方法一样</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>clazz.getDeclaredFields();//获取所有成员变量
-clazz.getField(&quot;name&quot;);//获取指定成员变量，个人感觉多余
-</code></pre>
-<ul>
-<li>对指定对象成员变量赋值</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>f.set(obj, T);//f为类对象获取的成员变量，obj是实例化的对象，T是成员变量需要赋予的类型值
-</code></pre>
-<ul>
-<li>暴力反射，解除私有限定，同理适用于方法，不在赘述</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>f.setAccessible(true);
-</code></pre>
-<h2>成员方法获取并调用</h2>
-<ul>
-<li>获取公有方法</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Method[] methodArray = stuClass.getMethods();  
-for(Method m : methodArray){  
-	System.out.println(m);  
-} 
-</code></pre>
-<ul>
-<li>获取所有方法</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Method[] methodArray = stuClass.getDeclaredMethods();
-</code></pre>
-<ul>
-<li>调用方法</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>//公有类方法调用
-Method m = stuClass.getMethod(&quot;show1&quot;, String.class);//show1是方法名的字符串形式，String.class代表需要的形参   
-m.invoke(clazz, value); //clazz是实例对象，value是方法需要实参
-      
-//私有类方法调用  
-m = stuClass.getDeclaredMethod(&quot;show4&quot;, int.class);    
-m.setAccessible(true);//解除私有限定  
-//有返回结果调用方法
-Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参    
-</code></pre>
 
           
         
@@ -1506,9 +1421,7 @@ Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的�
       
         
           
-            <h2>技术小白玩博客</h2>
-<h3>哈哈，博客新建，欢迎浏览，努力提升技术，不想看博客技术的，下面忽略</h3>
-<p><a href="/2018/04/02/blogit/blog-source-1/">技术来源</a></p>
+            <h2 id="技术小白玩博客"><a href="#技术小白玩博客" class="headerlink" title="技术小白玩博客"></a>技术小白玩博客</h2><h3 id="哈哈，博客新建，欢迎浏览，努力提升技术，不想看博客技术的，下面忽略"><a href="#哈哈，博客新建，欢迎浏览，努力提升技术，不想看博客技术的，下面忽略" class="headerlink" title="哈哈，博客新建，欢迎浏览，努力提升技术，不想看博客技术的，下面忽略"></a>哈哈，博客新建，欢迎浏览，努力提升技术，不想看博客技术的，下面忽略</h3><p><a href="/2018/04/02/blogit/blog-source-1/">技术来源</a></p>
 <hr>
 <p>额，主题冲突了，算了，下次再看，毕竟一口吃不成胖子</p>
 
@@ -1681,18 +1594,13 @@ Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的�
         
           
             <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           

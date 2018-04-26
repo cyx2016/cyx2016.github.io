@@ -102,12 +102,12 @@
 
 
 
-  <meta name="description" content="RMI初步学习  RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleto">
+  <meta name="description" content="RMI初步学习 RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-rmi学习">
 <meta property="og:url" content="http://cyx2016.github.io/2018/04/18/rmi学习/index.html">
 <meta property="og:site_name" content="cyx独立博客">
-<meta property="og:description" content="RMI初步学习  RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleto">
+<meta property="og:description" content="RMI初步学习 RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/qwLvcRF.jpg">
 <meta property="og:image" content="https://i.imgur.com/p5rUgqZ.png">
@@ -117,7 +117,7 @@
 <meta property="og:updated_time" content="2018-04-18T07:58:35.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-rmi学习">
-<meta name="twitter:description" content="RMI初步学习  RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleto">
+<meta name="twitter:description" content="RMI初步学习 RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton">
 <meta name="twitter:image" content="https://i.imgur.com/qwLvcRF.jpg">
 
 
@@ -397,155 +397,135 @@
       
 
       
-        <h1>RMI初步学习</h1>
-<blockquote>
-<p>RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton）。
-<img src="https://i.imgur.com/qwLvcRF.jpg" alt="">
-远程对象会在客户端生成存根对象。当客户端调用远程对象的方法时，实际上是调用本地存根的相应方法。然后，存根会把被访问的远程对象名、方法名以及参数编组后发送给服务器，由骨架去调用相应的远程方法并把返回值或异常返回给客户端。</p>
+        <h1 id="RMI初步学习"><a href="#RMI初步学习" class="headerlink" title="RMI初步学习"></a>RMI初步学习</h1><blockquote>
+<p>RMI是Remote Method Invoke的缩写，是JDK提供的一个完善的、简单易用的远程调用框架，它要求客户端和服务器端都是Java程序。下面简述RMI的基本原理：如下图所示，RMI采用代理来负责客户端和服务器之间socket通信的细节。RMI框架分别为远程对象生成了客户端代理和服务器端代理，位于客户端的代理称为存根（Stub），位于服务器端的代理称为骨架（Skeleton）。<br><img src="https://i.imgur.com/qwLvcRF.jpg" alt=""><br>远程对象会在客户端生成存根对象。当客户端调用远程对象的方法时，实际上是调用本地存根的相应方法。然后，存根会把被访问的远程对象名、方法名以及参数编组后发送给服务器，由骨架去调用相应的远程方法并把返回值或异常返回给客户端。</p>
 </blockquote>
-<h2>基本步骤</h2>
-<ol>
+<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><ol>
 <li>创建远程接口，继承java.rmi.Remote接口；</li>
 <li>创建远程类，实现远程接口；</li>
 <li>创建服务器程序，在rmiregistry注册表中注册远程对象；</li>
 <li>创建客户端程序，负责定位远程对象，并且调用远程方法。</li>
 </ol>
-<h2>代码实例</h2>
-<p><strong>server端</strong></p>
+<h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><p><strong>server端</strong></p>
 <ol>
-<li>
-<p>定义一个接口供远程调用</p>
-<pre><code>package day_1;
+<li><p>定义一个接口供远程调用</p>
+<pre><code> package day_1;
 
-import java.rmi.Remote;
+ import java.rmi.Remote;
 
-public interface Warehouse extends Remote {
-	double getPrice(String description) throws Exception;
-}
-</code></pre>
-</li>
-<li>
-<p>实现接口算法</p>
-<pre><code>package day_1;
-
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.HashMap;
-import java.util.Map;
-
-//服务器端接口实现
-public class WarehouseImpl extends UnicastRemoteObject implements Warehouse{
-
-	private Map&lt;String, Double&gt; prices;
-	protected WarehouseImpl() throws RemoteException {
-		super();
-		prices=new HashMap&lt;&gt;();
-		prices.put(&quot;联想电脑G490&quot;, 2500.00);
-		prices.put(&quot;kindle 2代&quot;, 400.00);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public double getPrice(String description) throws Exception {
-		Double price=prices.get(description);
-		return price==null ? 0 : price;
-	}
+ public interface Warehouse extends Remote {
+     double getPrice(String description) throws Exception;
  }
-</code></pre>
-</li>
-<li>
-<p>server端开启服务</p>
-<pre><code>package day_1;
+</code></pre></li>
+<li><p>实现接口算法</p>
+<pre><code> package day_1;
 
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
+ import java.rmi.RemoteException;
+ import java.rmi.server.UnicastRemoteObject;
+ import java.util.HashMap;
+ import java.util.Map;
 
-import javax.naming.*;
+ //服务器端接口实现
+ public class WarehouseImpl extends UnicastRemoteObject implements Warehouse{
 
-public class WarehouseServer {
-	public static void main(String[] args) throws Exception {
-		
-		//人工创建rmiregistry服务
-		LocateRegistry.createRegistry(12312); 
-		
-		System.out.println(&quot;构造 WarehouseImpl...&quot;);
-		WarehouseImpl centralWarehouse = new WarehouseImpl();
-		
-		System.out.println(&quot;对象注册到服务器RMI注册表中...&quot;);
-		Context namingContext = new InitialContext();
-		namingContext.bind(&quot;rmi://127.0.0.1:12312/Hello&quot;, centralWarehouse);
-		
-		System.out.println(&quot;等待客户端调用...&quot;);
-	}
+     private Map&lt;String, Double&gt; prices;
+     protected WarehouseImpl() throws RemoteException {
+         super();
+         prices=new HashMap&lt;&gt;();
+         prices.put(&quot;联想电脑G490&quot;, 2500.00);
+         prices.put(&quot;kindle 2代&quot;, 400.00);
+         // TODO Auto-generated constructor stub
+     }
 
-}
-</code></pre>
-</li>
+     @Override
+     public double getPrice(String description) throws Exception {
+         Double price=prices.get(description);
+         return price==null ? 0 : price;
+     }
+  }
+</code></pre></li>
+<li><p>server端开启服务</p>
+<pre><code> package day_1;
+
+ import java.rmi.RemoteException;
+ import java.rmi.registry.LocateRegistry;
+
+ import javax.naming.*;
+
+ public class WarehouseServer {
+     public static void main(String[] args) throws Exception {
+
+         //人工创建rmiregistry服务
+         LocateRegistry.createRegistry(12312); 
+
+         System.out.println(&quot;构造 WarehouseImpl...&quot;);
+         WarehouseImpl centralWarehouse = new WarehouseImpl();
+
+         System.out.println(&quot;对象注册到服务器RMI注册表中...&quot;);
+         Context namingContext = new InitialContext();
+         namingContext.bind(&quot;rmi://127.0.0.1:12312/Hello&quot;, centralWarehouse);
+
+         System.out.println(&quot;等待客户端调用...&quot;);
+     }
+
+ }
+</code></pre></li>
 </ol>
 <p><strong>client端调用</strong></p>
 <ol>
-<li>
-<p>映射服务端接口，便于调用
-	package day_1;</p>
-<pre><code>import java.rmi.Remote;
+<li><p>映射服务端接口，便于调用</p>
+<pre><code> package day_1;
 
-public interface Warehouse extends Remote {
-	double getPrice(String description) throws Exception;
-}
-</code></pre>
-</li>
-<li>
-<p>客户端调用方法</p>
-<pre><code>package day_1;
+ import java.rmi.Remote;
 
-import java.util.Enumeration;
+ public interface Warehouse extends Remote {
+     double getPrice(String description) throws Exception;
+ }
+</code></pre></li>
+<li><p>客户端调用方法</p>
+<pre><code> package day_1;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NameClassPair;
-import javax.naming.NamingException;
+ import java.util.Enumeration;
 
-public class WarehouseClient {
+ import javax.naming.Context;
+ import javax.naming.InitialContext;
+ import javax.naming.NameClassPair;
+ import javax.naming.NamingException;
 
-	public static void main(String[] args) throws Exception {
-		Context namingContext = new InitialContext();
-		
-		System.out.println(&quot;RMI 注册表绑定&quot;);
-		Enumeration&lt;NameClassPair&gt; e=namingContext.list(&quot;rmi://localhost:12312/&quot;);
-		while (e.hasMoreElements()) {
-			System.out.println(e.nextElement().getName());
-		}
-		
-		String url=&quot;rmi://127.0.0.1:12312/Hello&quot;;
-		Warehouse centralWarehouse=(Warehouse)namingContext.lookup(url);
-		
-		String descr=&quot;联想电脑G490&quot;;
-		Double price = centralWarehouse.getPrice(descr);
-		System.out.println(descr+&quot;:&quot;+price);
+ public class WarehouseClient {
 
-	}
+     public static void main(String[] args) throws Exception {
+         Context namingContext = new InitialContext();
 
-}
-</code></pre>
-</li>
+         System.out.println(&quot;RMI 注册表绑定&quot;);
+         Enumeration&lt;NameClassPair&gt; e=namingContext.list(&quot;rmi://localhost:12312/&quot;);
+         while (e.hasMoreElements()) {
+             System.out.println(e.nextElement().getName());
+         }
+
+         String url=&quot;rmi://127.0.0.1:12312/Hello&quot;;
+         Warehouse centralWarehouse=(Warehouse)namingContext.lookup(url);
+
+         String descr=&quot;联想电脑G490&quot;;
+         Double price = centralWarehouse.getPrice(descr);
+         System.out.println(descr+&quot;:&quot;+price);
+
+     }
+
+ }
+</code></pre></li>
 </ol>
-<h2>运行截图</h2>
-<p><em>server端</em></p>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><em>server端</em></p>
 <p><img src="https://i.imgur.com/p5rUgqZ.png" alt=""></p>
 <p><em>client端</em></p>
 <p><img src="https://i.imgur.com/kGGuCSQ.png" alt=""></p>
-<h2>出现问题及原因</h2>
-<p><em>server端</em></p>
+<h2 id="出现问题及原因"><a href="#出现问题及原因" class="headerlink" title="出现问题及原因"></a>出现问题及原因</h2><p><em>server端</em></p>
 <p><img src="https://i.imgur.com/rbh1ma5.png" alt=""></p>
-<p><strong>原因：</strong>
-rmi未注册端口
-后来用代码强行注册</p>
+<p><strong>原因：</strong><br>rmi未注册端口<br>后来用代码强行注册</p>
 <pre><code>LocateRegistry.createRegistry(12312);
-</code></pre>
-<p><em>client端</em></p>
+</code></pre><p><em>client端</em></p>
 <p><img src="https://i.imgur.com/vjdO9ko.png" alt=""></p>
-<p><strong>原因：</strong>
-客户端映射接口package需与服务端一致，遂改成package day_1;</p>
+<p><strong>原因：</strong><br>客户端映射接口package需与服务端一致，遂改成package day_1;</p>
 
       
     </div>
@@ -714,7 +694,7 @@ rmi未注册端口
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">RMI初步学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">代码实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">运行截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">出现问题及原因</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RMI初步学习"><span class="nav-number">1.</span> <span class="nav-text">RMI初步学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本步骤"><span class="nav-number">1.1.</span> <span class="nav-text">基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实例"><span class="nav-number">1.2.</span> <span class="nav-text">代码实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行截图"><span class="nav-number">1.3.</span> <span class="nav-text">运行截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出现问题及原因"><span class="nav-number">1.4.</span> <span class="nav-text">出现问题及原因</span></a></li></ol></li></ol></div>
             
 
           </div>

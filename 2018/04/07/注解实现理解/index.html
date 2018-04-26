@@ -102,17 +102,17 @@
 
 
 
-  <meta name="description" content="注解实现理解 学习链接 简介 注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己">
+  <meta name="description" content="注解实现理解学习链接 简介注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-注解">
 <meta property="og:url" content="http://cyx2016.github.io/2018/04/07/注解实现理解/index.html">
 <meta property="og:site_name" content="cyx独立博客">
-<meta property="og:description" content="注解实现理解 学习链接 简介 注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己">
+<meta property="og:description" content="注解实现理解学习链接 简介注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-04-07T08:56:17.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-注解">
-<meta name="twitter:description" content="注解实现理解 学习链接 简介 注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己">
+<meta name="twitter:description" content="注解实现理解学习链接 简介注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现">
 
 
 
@@ -391,12 +391,10 @@
       
 
       
-        <h1>注解实现理解</h1>
-<p><a href="http://blog.csdn.net/zhang0558/article/details/52643016" title="模仿总结" target="_blank" rel="noopener">学习链接</a></p>
-<h1>简介</h1>
-<p>注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现的自定义注解，也可以自己定义注解供使用。</p>
+        <h1 id="注解实现理解"><a href="#注解实现理解" class="headerlink" title="注解实现理解"></a>注解实现理解</h1><p><a href="http://blog.csdn.net/zhang0558/article/details/52643016" title="模仿总结" target="_blank" rel="noopener">学习链接</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>注解（Annotation）是JDK1.5引入的新特性，包含在java.lang.annotation包中，它是附加在代码中的一些元信息，将一个类的外部信息与内部成员联系起来，在编 译、运行时进行解析和使用。Java内置了一些注解（如@Override、@Deprecated等），还支持自定义注解，一些知名的框架 Struts、Hibernate、Spring都有自己实现的自定义注解，也可以自己定义注解供使用。</p>
 <p>Annotation十分类似public、final这样的修饰符。每个Annotation具有一个名字和成员个数&gt;=0。每个Annotation的成员具有被称为name=value对的名字和值（就像javabean一样），name=value装载了Annotation的信息。</p>
-<h1>注解实现实例</h1>
+<h1 id="注解实现实例"><a href="#注解实现实例" class="headerlink" title="注解实现实例"></a>注解实现实例</h1><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -407,11 +405,11 @@
 <tbody>
 <tr>
 <td>@Target</td>
-<td style="text-align:right">表示该注解可以用于什么地方，可能的ElementType参数有&lt;br&gt;CONSTRUCTOR：构造器的声明&lt;br&gt;FIELD：域声明（包括enum实例）&lt;br&gt;LOCAL_VARIABLE：局部变量&lt;br&gt;METHOD：方法声明 PACKAGE：包声明&lt;br&gt;PARAMETER：参数声明 &lt;br&gt;TYPE：类、接口（包括注解类型）或enum声明</td>
+<td style="text-align:right">表示该注解可以用于什么地方，可能的ElementType参数有<br>CONSTRUCTOR：构造器的声明<br>FIELD：域声明（包括enum实例）<br>LOCAL_VARIABLE：局部变量<br>METHOD：方法声明 PACKAGE：包声明<br>PARAMETER：参数声明 <br>TYPE：类、接口（包括注解类型）或enum声明</td>
 </tr>
 <tr>
 <td>@Retention</td>
-<td style="text-align:right">表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数包括：&lt;br&gt;SOURCE：注解将被编译器丢弃&lt;br&gt;CLASS：注解在class文件中可用，但会被VM丢弃&lt;br&gt;RUNTIME：VM将在运行期间保留注解，因此可以通过反射机制读取注解的信息。</td>
+<td style="text-align:right">表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数包括：<br>SOURCE：注解将被编译器丢弃<br>CLASS：注解在class文件中可用，但会被VM丢弃<br>RUNTIME：VM将在运行期间保留注解，因此可以通过反射机制读取注解的信息。</td>
 </tr>
 <tr>
 <td>@Document</td>
@@ -423,8 +421,8 @@
 </tr>
 </tbody>
 </table>
-<h2>第一步：定义注解</h2>
-<pre><code>import java.lang.annotation.ElementType;  
+</div>
+<h2 id="第一步：定义注解"><a href="#第一步：定义注解" class="headerlink" title="第一步：定义注解"></a>第一步：定义注解</h2><pre><code>import java.lang.annotation.ElementType;  
 import java.lang.annotation.Inherited;  
 import java.lang.annotation.Retention;  
 import java.lang.annotation.RetentionPolicy;  
@@ -438,9 +436,7 @@ public @interface MyTag {
     String name() default &quot;车&quot;;  
     int size() default 10;  
 }
-</code></pre>
-<h2>第二步：定义注解</h2>
-
+</code></pre><h2 id="第二步：定义注解"><a href="#第二步：定义注解" class="headerlink" title="第二步：定义注解"></a>第二步：定义注解</h2>
       
     </div>
 
@@ -608,7 +604,7 @@ public @interface MyTag {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">注解实现理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">注解实现实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">第一步：定义注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">第二步：定义注解</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注解实现理解"><span class="nav-number">1.</span> <span class="nav-text">注解实现理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解实现实例"><span class="nav-number">3.</span> <span class="nav-text">注解实现实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：定义注解"><span class="nav-number">3.1.</span> <span class="nav-text">第一步：定义注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：定义注解"><span class="nav-number">3.2.</span> <span class="nav-text">第二步：定义注解</span></a></li></ol></li></ol></div>
             
 
           </div>
