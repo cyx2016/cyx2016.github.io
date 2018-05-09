@@ -102,17 +102,17 @@
 
 
 
-  <meta name="description" content="#反射机制学习 参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情 对象获取  第一种方式获取Class对象  Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。   Cl">
+  <meta name="description" content="反射机制学习参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情对象获取 第一种方式获取Class对象      Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。   Cl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-反射机制">
 <meta property="og:url" content="http://cyx2016.github.io/2018/04/07/反射机制/index.html">
 <meta property="og:site_name" content="cyx独立博客">
-<meta property="og:description" content="#反射机制学习 参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情 对象获取  第一种方式获取Class对象  Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。   Cl">
+<meta property="og:description" content="反射机制学习参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情对象获取 第一种方式获取Class对象      Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。   Cl">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-04-07T09:04:10.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-反射机制">
-<meta name="twitter:description" content="#反射机制学习 参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情 对象获取  第一种方式获取Class对象  Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。   Cl">
+<meta name="twitter:description" content="反射机制学习参照学习链接  反射就是把java类中的各种成分映射成一个个的Java对象 例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象  使用详情对象获取 第一种方式获取Class对象      Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。   Cl">
 
 
 
@@ -401,28 +401,23 @@
       
 
       
-        <p>#反射机制学习</p>
-<p><a href="http://blog.csdn.net/sinat_38259539/article/details/71799078" title="模仿总结" target="_blank" rel="noopener">参照学习链接</a></p>
+        <h1 id="反射机制学习"><a href="#反射机制学习" class="headerlink" title="反射机制学习"></a>反射机制学习</h1><p><a href="http://blog.csdn.net/sinat_38259539/article/details/71799078" title="模仿总结" target="_blank" rel="noopener">参照学习链接</a></p>
 <blockquote>
 <p>反射就是把java类中的各种成分映射成一个个的Java对象</p>
 <p>例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象</p>
 </blockquote>
-<h1>使用详情</h1>
-<h2>对象获取</h2>
-<blockquote>
-<p>第一种方式获取Class对象</p>
+<h1 id="使用详情"><a href="#使用详情" class="headerlink" title="使用详情"></a>使用详情</h1><h2 id="对象获取"><a href="#对象获取" class="headerlink" title="对象获取"></a>对象获取</h2><blockquote>
+<p>第一种方式获取Class对象    </p>
 </blockquote>
 <pre><code>Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。  
 Class stuClass = stu1.getClass();//获取Class对象  
 System.out.println(stuClass.getName());  
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>第二种方式获取Class对象</p>
 </blockquote>
 <pre><code>Class stuClass2 = Student.class;  
 System.out.println(stuClass == stuClass2);//判断第一种方式获取的Class对象和第二种方式获取的是否是同一个
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>第三种方式获取Class对象</p>
 </blockquote>
 <pre><code>try {  
@@ -431,99 +426,56 @@ System.out.println(stuClass == stuClass2);//判断第一种方式获取的Class�
 } catch (ClassNotFoundException e) {  
         e.printStackTrace();  
 }    
-</code></pre>
-<h2>构造方法获取并使用</h2>
-<blockquote>
+</code></pre><h2 id="构造方法获取并使用"><a href="#构造方法获取并使用" class="headerlink" title="构造方法获取并使用"></a>构造方法获取并使用</h2><blockquote>
 <p>假设对象已获取，为clazz</p>
 </blockquote>
 <ul>
-<li>获取所有公有构造方法</li>
+<li><p>获取所有公有构造方法<br>&gt;</p>
+<p>  Constructor[] conArray = clazz.getConstructors();<br>  //输出显示<br>  for(Constructor c : conArray){  </p>
+<pre><code>      System.out.println(c);  
+</code></pre><p>  } </p>
+</li>
+<li><p>获取所有构造方法<br>&gt;</p>
+<p>  Constructor[] conArray = clazz.getDeclaredConstructors();</p>
+</li>
+<li><p>获取公有、无参的构造方法<br>&gt;</p>
+<p>  Constructor con = clazz.getConstructor(null); //null可以不写</p>
+</li>
+<li><p>构造方法使用<br>&gt;</p>
+<p>  Object obj = con.newInstance();<br>成员变量获取并使用</p>
+</li>
 </ul>
-<blockquote></blockquote>
-<pre><code>Constructor[] conArray = clazz.getConstructors();  
-//输出显示
-for(Constructor c : conArray){  
-        System.out.println(c);  
-} 
-</code></pre>
+<hr>
 <ul>
-<li>获取所有构造方法</li>
+<li><p>获取所有公有成员变量<br>&gt;</p>
+<p>  Field[] fieldArray = clazz.getFields();<br>  //输出显示<br>  for(Constructor c : conArray){  </p>
+<pre><code>      System.out.println(c);  
+</code></pre><p>  }</p>
+</li>
+<li><p>同理，同构造方法一样<br>&gt;</p>
+<p>  clazz.getDeclaredFields();//获取所有成员变量<br>  clazz.getField(“name”);//获取指定成员变量，个人感觉多余</p>
+</li>
+<li><p>对指定对象成员变量赋值<br>&gt;</p>
+<p>  f.set(obj, T);//f为类对象获取的成员变量，obj是实例化的对象，T是成员变量需要赋予的类型值</p>
+</li>
+<li><p>暴力反射，解除私有限定，同理适用于方法，不在赘述<br>&gt;</p>
+<p>  f.setAccessible(true);</p>
+</li>
 </ul>
-<blockquote></blockquote>
-<pre><code>Constructor[] conArray = clazz.getDeclaredConstructors();
-</code></pre>
-<ul>
-<li>获取公有、无参的构造方法</li>
+<h2 id="成员方法获取并调用"><a href="#成员方法获取并调用" class="headerlink" title="成员方法获取并调用"></a>成员方法获取并调用</h2><ul>
+<li><p>获取公有方法<br>&gt;</p>
+<p>  Method[] methodArray = stuClass.getMethods();<br>  for(Method m : methodArray){  </p>
+<pre><code>  System.out.println(m);  
+</code></pre><p>  } </p>
+</li>
+<li><p>获取所有方法<br>&gt;</p>
+<p>  Method[] methodArray = stuClass.getDeclaredMethods();</p>
+</li>
+<li><p>调用方法<br>&gt;</p>
+<p>  //公有类方法调用<br>  Method m = stuClass.getMethod(“show1”, String.class);//show1是方法名的字符串形式，String.class代表需要的形参<br>  m.invoke(clazz, value); //clazz是实例对象，value是方法需要实参</p>
+<p>  //私有类方法调用<br>  m = stuClass.getDeclaredMethod(“show4”, int.class);<br>  m.setAccessible(true);//解除私有限定<br>  //有返回结果调用方法<br>  Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参    </p>
+</li>
 </ul>
-<blockquote></blockquote>
-<pre><code>Constructor con = clazz.getConstructor(null); //null可以不写
-</code></pre>
-<ul>
-<li>构造方法使用</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Object obj = con.newInstance(); 
-</code></pre>
-<h2>成员变量获取并使用</h2>
-<ul>
-<li>获取所有公有成员变量</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Field[] fieldArray = clazz.getFields(); 
-//输出显示
-for(Constructor c : conArray){  
-        System.out.println(c);  
-}
-</code></pre>
-<ul>
-<li>同理，同构造方法一样</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>clazz.getDeclaredFields();//获取所有成员变量
-clazz.getField(&quot;name&quot;);//获取指定成员变量，个人感觉多余
-</code></pre>
-<ul>
-<li>对指定对象成员变量赋值</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>f.set(obj, T);//f为类对象获取的成员变量，obj是实例化的对象，T是成员变量需要赋予的类型值
-</code></pre>
-<ul>
-<li>暴力反射，解除私有限定，同理适用于方法，不在赘述</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>f.setAccessible(true);
-</code></pre>
-<h2>成员方法获取并调用</h2>
-<ul>
-<li>获取公有方法</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Method[] methodArray = stuClass.getMethods();  
-for(Method m : methodArray){  
-	System.out.println(m);  
-} 
-</code></pre>
-<ul>
-<li>获取所有方法</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>Method[] methodArray = stuClass.getDeclaredMethods();
-</code></pre>
-<ul>
-<li>调用方法</li>
-</ul>
-<blockquote></blockquote>
-<pre><code>//公有类方法调用
-Method m = stuClass.getMethod(&quot;show1&quot;, String.class);//show1是方法名的字符串形式，String.class代表需要的形参   
-m.invoke(clazz, value); //clazz是实例对象，value是方法需要实参
-      
-//私有类方法调用  
-m = stuClass.getDeclaredMethod(&quot;show4&quot;, int.class);    
-m.setAccessible(true);//解除私有限定  
-//有返回结果调用方法
-Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参    
-</code></pre>
 
       
     </div>
@@ -640,7 +592,7 @@ Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -663,6 +615,21 @@ Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的�
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
               
             </nav>
           
@@ -695,7 +662,7 @@ Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">使用详情</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">对象获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">构造方法获取并使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">成员变量获取并使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">成员方法获取并调用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射机制学习"><span class="nav-number">1.</span> <span class="nav-text">反射机制学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用详情"><span class="nav-number">2.</span> <span class="nav-text">使用详情</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象获取"><span class="nav-number">2.1.</span> <span class="nav-text">对象获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法获取并使用"><span class="nav-number">2.2.</span> <span class="nav-text">构造方法获取并使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员方法获取并调用"><span class="nav-number">2.3.</span> <span class="nav-text">成员方法获取并调用</span></a></li></ol></li></ol></div>
             
 
           </div>
